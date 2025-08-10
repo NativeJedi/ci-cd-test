@@ -7,7 +7,7 @@ const ProductionConfig: DataSourceOptions = {
   type: 'postgres',
   url: AppConfig.DATABASE_URL,
   entities: [Account],
-  synchronize: true,
+  synchronize: false,
   migrations: [AppConfig.MIGRATIONS_DIR],
 };
 
