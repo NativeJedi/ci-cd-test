@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install action dependencies
+        run: npm install @actions/core @actions/exec
+        shell: bash
+        working-directory: .github/actions/image-push
+
       - name: Run build-push action
         uses: ./.github/actions/image-push
         with:
