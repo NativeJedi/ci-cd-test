@@ -13,7 +13,9 @@
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\"",
     "schema:check": "npx ts-node scripts/schema-check.ts",
-    "prepare": "husky"
+    "prepare": "if [ \"$NODE_ENV\" != \"production\" ]; then husky; fi",
+    "dev": "docker compose up db app-dev",
+    "prod": "docker compose up -d db app-prod"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
