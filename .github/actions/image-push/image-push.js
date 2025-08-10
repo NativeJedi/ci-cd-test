@@ -4,7 +4,7 @@ const exec = require('@actions/exec');
 async function run() {
   try {
     const token = core.getInput('github_token', { required: true });
-    const imageName = core.getInput('image_name', { required: true });
+    const imageName = core.getInput('image_name', { required: true }).toLowerCase();
     const registry = 'ghcr.io';
     const sha = process.env.GITHUB_SHA?.substring(0, 7) ?? 'local';
 
