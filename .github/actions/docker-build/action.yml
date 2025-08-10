@@ -15,11 +15,11 @@ runs:
   steps:
     - name: Install dependencies
       run: npm install
-      shell: bash
+      working-directory: ${{ github.action_path }}
 
-    - name: Build the action
+    - name: Build action
       run: npm run build
-      shell: bash
+      working-directory: ${{ github.action_path }}
 
     - run: node ${{ github.action_path }}/dist/index.js
       shell: bash
