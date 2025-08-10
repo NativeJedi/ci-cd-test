@@ -13,5 +13,13 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: Install dependencies
+      run: npm install
+      shell: bash
+
+    - name: Build the action
+      run: npm run build
+      shell: bash
+
     - run: node ${{ github.action_path }}/dist/index.js
       shell: bash
