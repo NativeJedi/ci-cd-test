@@ -1,0 +1,17 @@
+name: 'Build & Push Docker image'
+description: 'Builds Docker image and pushes to GHCR'
+inputs:
+  registry:
+    description: 'Container registry'
+    default: 'ghcr.io'
+  image_name:
+    description: 'Image path'
+    required: true
+  token:
+    description: 'GH token'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - run: node ${{ github.action_path }}/dist/index.js
+      shell: bash
