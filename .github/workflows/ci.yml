@@ -9,7 +9,8 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Run build-push action
-        uses: ./.github/actions/image-push/image-push.yml
+        uses: ./.github/actions/image-push
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
