@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run docker build and push action
-      - uses: ./.github/actions/docker-build
+        uses: ./.github/actions/docker-build
         with:
           image_name: ${{ github.repository }}
           token: ${{ secrets.GITHUB_TOKEN }}
