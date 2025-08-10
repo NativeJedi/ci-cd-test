@@ -5,6 +5,9 @@ inputs:
   github_token:
     description: 'GitHub Token for GHCR login'
     required: true
+  image_name:
+    description: 'Image name'
+    required: true
 
 outputs:
   image:
@@ -16,5 +19,3 @@ runs:
     - name: Docker build & push
       run: node $GITHUB_ACTION_PATH/image-push.js
       shell: bash
-      env:
-        GITHUB_TOKEN: ${{ inputs.github_token }}

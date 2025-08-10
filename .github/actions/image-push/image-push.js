@@ -3,12 +3,12 @@ const exec = require('@actions/exec');
 
 async function run() {
   try {
-    const token = process.env.GITHUB_TOKEN;
+    const token = core.getInput('github_token', { required: true });
+    const imageName = core.getInput('image_name', { required: true });
     const registry = 'ghcr.io';
-    const repo = process.env.GITHUB_REPOSITORY;
-    const sha = process.env.GITHUB_SHA;
+    const sha = process.env.GITHUB_SHA?.substring(0, 7) ?? 'local';
 
-    const imageTag = `${registry}/${repo}:${sha}`;
+    const imageTag = `${registry}/${imageName}:${sha}`;
 
     core.info(`Image tag: ${imageTag}`);
 
