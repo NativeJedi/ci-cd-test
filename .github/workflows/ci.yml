@@ -20,3 +20,4 @@ jobs:
         uses: ./.github/actions/image-push
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          image_name: ${{ github.repository }}
