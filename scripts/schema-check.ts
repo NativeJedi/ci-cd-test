@@ -17,7 +17,7 @@ function run() {
     runCommand('npm run db');
 
     const stdout = execSync(
-      `npx ts-node ./node_modules/typeorm/cli.js schema:log -d ${DATA_SOURCE}`,
+      `DATABASE_URL=postgres://postgres:postgres@localhost:5432/db npx ts-node ./node_modules/typeorm/cli.js schema:log -d ${DATA_SOURCE}`,
       { encoding: 'utf-8' },
     );
 
