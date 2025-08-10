@@ -3,9 +3,9 @@ import * as exec from '@actions/exec';
 
 async function run(): Promise<void> {
   try {
-    const registry = core.getInput('registry');
-    const imageName = core.getInput('image_name', { required: true }).toLowerCase();
-    const token = core.getInput('token', { required: true });
+    const registry = process.env.REGISTRY ?? 'ghcr.io';
+    const imageName = (process.env.IMAGE_NAME ?? '').toLowerCase();
+    const token = process.env.TOKEN ?? '';
     const sha = process.env.GITHUB_SHA?.substring(0, 7) ?? 'local';
 
     await exec.exec('npm', ['ci', '--omit=dev']);
