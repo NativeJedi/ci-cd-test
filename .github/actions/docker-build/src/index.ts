@@ -8,9 +8,6 @@ async function run(): Promise<void> {
     const token = process.env.TOKEN ?? '';
     const sha = process.env.GITHUB_SHA?.substring(0, 7) ?? 'local';
 
-    await exec.exec('npm', ['ci', '--omit=dev']);
-    await exec.exec('npm', ['run', 'build']);
-
     await exec.exec('docker', ['login', registry, '-u', 'x-access-token', '-p', token]);
     const tag = `${registry}/${imageName}:${sha}`;
     await exec.exec('docker', ['build', '.', '-t', tag]);
